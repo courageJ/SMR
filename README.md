@@ -4,7 +4,8 @@ A Submodular Maximization Based Rewriting Algorithm in Deduplication-based Backu
 
 #The SMR paper
 
-Jie Wu , Yu Hua , Pengfei Zuo , and Yuanyuan Sun, "Improving Restore Speed in Deduplication-based Backup Systems via Submodular Maximization Based Rewriting Algorithm", submitted to IPDPS 2017.
+Jie Wu , Yu Hua , Pengfei Zuo and Yuanyuan Sun, "A Submodular Maximization Rewriting Scheme to Improve Restore Performance in
+Deduplication-based Backup Systems", submitted to IPDPS 2017.
 
 #Environment
 Linux 64bit.
