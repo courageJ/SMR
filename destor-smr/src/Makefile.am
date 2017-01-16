@@ -1,0 +1,3 @@
+noinst_LIBRARIES=libdestor.a
+libdestor_a_SOURCES=destor.cpp jcr.cpp config.cpp do_backup.cpp read_phase.cpp chunk_phase.cpp hash_phase.cpp trace_phase.cpp dedup_phase.cpp rewrite_phase.cpp filter_phase.cpp cfl_rewrite.cpp cap_rewrite.cpp cbr_rewrite.cpp har_rewrite.cpp restore_aware.cpp do_restore.cpp optimal_restore.cpp assembly_restore.cpp cma.cpp do_delete.cpp lru_cache.cpp sync_queue.cpp queue.cpp serial.cpp bloom_filter.cpp sds.cpp containerstore.cpp recipestore.cpp index.cpp fingerprint_cache.cpp kvstore.cpp kvstore_htable.cpp sampling_method.cpp segmenting_method.cpp similarity_detection.cpp libhashfile.cpp read_fsl_trace.cpp rabin_chunking.cpp ae_chunking.cpp smr_rewrite.cpp ned_rewrite.cpp
+LIBS=-lglib
