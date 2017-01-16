@@ -160,7 +160,6 @@ void *smr_rewrite(void* arg) {
 				int64_t preCtrID = -1;
 				for (int cur_ctr_id = 0; cur_ctr_id < cur_container_count; cur_ctr_id++) {
 					if (is_container_selected[cur_ctr_id]) continue;
-					if (all_fp[cur_ctr_id].size() < 10) continue;
 					int64_t curDedup = 0;
 					for (int chunk_id = 0; chunk_id < all_fp[cur_ctr_id].size(); chunk_id++) {
 						string cur_chunk = all_fp[cur_ctr_id][chunk_id];
