@@ -209,10 +209,6 @@ void kvstore_htable_update(unsigned char* key, int64_t id) {
 	chunk_count ++;
 	new_fp[0] = (unsigned char)chunk_count;
 	if (chunk_count > 254) {
-		char code[41];
-		hash2code((unsigned char*)exist_fp, code);
-		code[40] = 0;
-		printf ("218L: bug:fp_count overflow: chunk_count = %lld, code = %s\n", chunk_count, code);
 		return;
 //		exit(-1);
 	}
