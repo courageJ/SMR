@@ -98,7 +98,6 @@ void *cap_rewrite(void* arg) {
 				containerid realid = *kvstore_lookup(new_fp);
 				containerid *idpt = (containerid *)g_hash_table_lookup(real_containerid_to_tmp, &realid);
 				if (!idpt &&((cur_container_count + 1) > MAX_CONTAINER_COUNT)) {
-					puts("126L");
 					continue;
 				}
 		    	containerid *realidpt = (containerid *)malloc(sizeof(containerid));
