@@ -179,43 +179,22 @@ void kvstore_htable_update(unsigned char* key, int64_t id) {
 		exist_fp[i] = key[i];
 	}
 	chunk_count_fp[0] = (unsigned char)(254);
-/*
-                char code[41];
-                hash2code((unsigned char*)exist_fp, code);
-                code[40] = 0;
-                //printf ("182L: code = %s\n",  code);
-*/
+
 
 	int64_t chunk_count = 0;
 	int64_t *chunk_count_pt = kvstore_htable_lookup(chunk_count_fp);
 	if (!chunk_count_pt) {
 		chunk_count = 0;
-	/*
-	char code[41];
-		hash2code((unsigned char*)chunk_count_fp, code);
-		code[40] = 0;
-		//printf ("190L:  code = %s\n",  code);*/
         }
 	else {
 		chunk_count = *chunk_count_pt;
-		/*
-		char code[41];
-		hash2code((unsigned char*)chunk_count_fp, code);
-		code[40] = 0;
-		//printf ("194L: code = %s, chunk_count = %d\n",  code, chunk_count);*/
 		
 	}
-	//printf ("WJ: chunk_count = %d\n", chunk_count);
 	//Secondly, find every count, and determine whether the same id is added.
 	for (int i = 1; i <= chunk_count; i++) {
 		exist_fp[0] = (char)i;
 		int64_t *exist_id_pt = kvstore_htable_lookup(exist_fp);
-		if (!exist_id_pt) {/*
-			char code[41];
-			hash2code((unsigned char*)exist_fp, code);
-			code[40] = 0;*/
-			//printf ("200L: bug in i = %d, code = %s\n", i, code);
-			//printf ("WJ: c->flag = %d\n", c->flag);
+		if (!exist_id_pt) {
 			chunk_count = i - 1;
 			break;
 			exit(-1);
@@ -228,7 +207,6 @@ void kvstore_htable_update(unsigned char* key, int64_t id) {
 	//Thirdly, add new chunk with[0] = count, into hash table
 	// count starts from 1
 	chunk_count ++;
-	//printf ("WJ2: chunk_count = %d\n", chunk_count);
 	new_fp[0] = (unsigned char)chunk_count;
 	if (chunk_count > 254) {
 		char code[41];
@@ -253,15 +231,7 @@ void kvstore_htable_update(unsigned char* key, int64_t id) {
 		g_hash_table_replace(htable, get_key(kv), kv);
 	}
 	kv_update(kv, chunk_count);
-/*	
-	//char code[41];
-	hash2code((unsigned char*)new_fp, code);
-	code[40] = 0;
-	printf ("237L: new_fp = %s, id = %lld\n", code, id);
-
-	hash2code((unsigned char*)chunk_count_fp, code);
-	printf ("240L: chunk_count_fp = %s, chunk_count = %lld\n", code, chunk_count);
-*/	
+	
 }
 
 /* Remove the 'id' from the kvpair identified by 'key' */
