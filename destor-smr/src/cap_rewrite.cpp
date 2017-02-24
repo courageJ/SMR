@@ -62,13 +62,10 @@ void *cap_rewrite(void* arg) {
 		TIMER_BEGIN(1);
 		if (!rewrite_buffer_push(c)) {
 			rewrite_buffer_chunk_pt.push_back(c);
-			//1. add all chunk pt into buffer
 			TIMER_END(1, jcr.rewrite_time);
 			continue;
 		}
 
-		//2. get all refered ids of all chunks
-		//   add keep all chunk fp into the vector of the container they belongs to
 		real_containerid_to_tmp = g_hash_table_new_full(g_int64_hash, g_int64_equal, NULL, free);
 		memset(tmp_to_real_containerid, -1, sizeof(tmp_to_real_containerid));
 		int cur_container_count = 0;
@@ -76,7 +73,6 @@ void *cap_rewrite(void* arg) {
 		for (int chunk_id = 0; chunk_id < rewrite_buffer_chunk_pt.size(); chunk_id++) {
 			c = rewrite_buffer_chunk_pt[chunk_id];
 			if(!CHECK_CHUNK(c, CHUNK_DUPLICATE)) continue;
-			//only check all duplicate chunks
 			fingerprint cur_fp;
 			fingerprint chunk_count_fp;
 			fingerprint new_fp;
@@ -218,7 +214,6 @@ void *cap_rewrite(void* arg) {
 	for (int chunk_id = 0; chunk_id < rewrite_buffer_chunk_pt.size(); chunk_id++) {
 		c = rewrite_buffer_chunk_pt[chunk_id];
 		if(!CHECK_CHUNK(c, CHUNK_DUPLICATE)) continue;
-		//only check all duplicate chunks
 		fingerprint cur_fp;
 		fingerprint chunk_count_fp;
 		fingerprint new_fp;
