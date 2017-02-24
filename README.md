@@ -45,13 +45,12 @@ You can do the following steps to backup and restore the backup stream.
 
    Example: `destor /home/data/`
 
- 
 
 2. start a restore task,
 
    > destor -r$backup_job_id$ /restore_direstory
 
-   Example: destor -r0 /home/restore/ 
+   Example: `destor -r0 /home/restore/ `
 
 # Configuration
 
