@@ -12,6 +12,8 @@ We use the interfaces in [Destor](https://github.com/fomy/destor) and make some 
 
 The detailed implementation of SMR scheme is in the code file `destor-smr/src/smr_rewrite.cpp`.
 
+The compared rewriting schemes in SMR papers are implemented in the code files `destor-smr/src/cap_rewrite.cpp` and `destor-smr/src/ned_rewrite.cpp`.
+
 # Environment
 
 Linux 64bit.
