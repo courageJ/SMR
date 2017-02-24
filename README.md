@@ -4,7 +4,7 @@ SMR, i.e, Submodular Maximization Rewriting Scheme, is a cost-efficient rewritin
 
 # The SMR paper
 
-Jie Wu , Yu Hua , Pengfei Zuo and Yuanyuan Sun, "A Cost-efficient Rewriting Scheme to Improve Restore Performance in Deduplication Systems".
+Jie Wu, Yu Hua, Pengfei Zuo and Yuanyuan Sun, "A Cost-efficient Rewriting Scheme to Improve Restore Performance in Deduplication Systems".
 
 # Implementation
 
@@ -55,7 +55,7 @@ You can do the following steps to backup and restore the backup stream.
 
 A sample configuration is shown in destor.config
 
-The default rewriting scheme is SMR. The SMR level in `destor.config` is adjustable according  the demand of restore performance.
+The default rewriting scheme is SMR. The SMR level in `destor.config` is adjustable according to the demand of restore performance.
 
 # Contact
 
