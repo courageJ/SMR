@@ -55,10 +55,11 @@ You can do the following steps to backup and restore the backup stream.
 
 # Configuration
 
-A sample configuration is shown in destor.config
+A sample configuration is shown in `destor.config`.
 
-The default rewriting scheme is SMR. The SMR level in `destor.config` is adjustable according to the demand of restore performance.
+The default rewriting scheme in `destor.config` is SMR. You can choose other rewriting schemes or no rewriting. 
 
+The SMR level in `destor.config` is adjustable according to the demand of restore performance. 
 # Contact
 
 Email: wujie@hust.edu.cn
