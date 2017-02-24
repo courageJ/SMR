@@ -69,13 +69,10 @@ void *ned_rewrite(void* arg) {
 		TIMER_BEGIN(1);
 		if (!rewrite_buffer_push(c)) {
 			rewrite_buffer_chunk_pt.push_back(c);
-			//1. add all chunk pt into buffer
 			TIMER_END(1, jcr.rewrite_time);
 			continue;
 		}
 
-		//2. get all refered ids of all chunks
-		//   add keep all chunk fp into the vector of the container they belongs to
 		real_containerid_to_tmp = g_hash_table_new_full(g_int64_hash, g_int64_equal, NULL, free);
 		memset(tmp_to_real_containerid, -1, sizeof(tmp_to_real_containerid));
 		int cur_container_count = 0;
@@ -83,7 +80,6 @@ void *ned_rewrite(void* arg) {
 		for (int chunk_id = 0; chunk_id < rewrite_buffer_chunk_pt.size(); chunk_id++) {
 			c = rewrite_buffer_chunk_pt[chunk_id];
 			if(!CHECK_CHUNK(c, CHUNK_DUPLICATE)) continue;
-			//only check all duplicate chunks
 			fingerprint cur_fp;
 			fingerprint chunk_count_fp;
 			fingerprint new_fp;
@@ -196,7 +192,6 @@ void *ned_rewrite(void* arg) {
 					&& !CHECK_CHUNK(c, CHUNK_SEGMENT_END)
 					&& CHECK_CHUNK(c, CHUNK_DUPLICATE)) {
 				if (g_hash_table_lookup(top, &c->id) == NULL) {
-					/* not in TOP */
 					SET_CHUNK(c, CHUNK_OUT_OF_ORDER);
 					VERBOSE("Rewrite phase: %lldth chunk is in out-of-order container %lld",
 							chunk_num, c->id);
@@ -223,7 +218,6 @@ void *ned_rewrite(void* arg) {
 	for (int chunk_id = 0; chunk_id < rewrite_buffer_chunk_pt.size(); chunk_id++) {
 		c = rewrite_buffer_chunk_pt[chunk_id];
 		if(!CHECK_CHUNK(c, CHUNK_DUPLICATE)) continue;
-		//only check all duplicate chunks
 		fingerprint cur_fp;
 		fingerprint chunk_count_fp;
 		fingerprint new_fp;
@@ -322,7 +316,6 @@ void *ned_rewrite(void* arg) {
 		if (!CHECK_CHUNK(c,	CHUNK_FILE_START) && !CHECK_CHUNK(c, CHUNK_FILE_END)
 				&& !CHECK_CHUNK(c, CHUNK_SEGMENT_START) && !CHECK_CHUNK(c, CHUNK_SEGMENT_END)) {
 			if (g_hash_table_lookup(top, &c->id) == NULL) {
-				/* not in TOP */
 				SET_CHUNK(c, CHUNK_OUT_OF_ORDER);
 				VERBOSE("Rewrite phase: %lldth chunk is in out-of-order container %lld",
 						chunk_num, c->id);
