@@ -35,7 +35,7 @@ If all dependencies are installed, compiling destor is straightforward:
 
 The `rebuild` script should be run before destor to prepare working directory and clear data.
 
-The default working path is in destor.config. You can modify it together with the rebuild script. 
+The default working path is in `destor.config`. You can modify it together with the rebuild script. 
 
 You can do the following steps to backup and restore the backup stream.
 
@@ -44,7 +44,6 @@ You can do the following steps to backup and restore the backup stream.
    > destor /backup_stream_directory
 
    Example: `destor /home/data/`
-
 
 2. start a restore task,
 
@@ -56,7 +55,7 @@ You can do the following steps to backup and restore the backup stream.
 
 A sample configuration is shown in destor.config
 
-The default rewriting scheme is SMR. The SMR level in destor.config is adjustable according  the demand of restore performance.
+The default rewriting scheme is SMR. The SMR level in `destor.config` is adjustable according  the demand of restore performance.
 
 # Contact
 
