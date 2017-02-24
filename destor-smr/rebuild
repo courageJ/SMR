@@ -9,5 +9,3 @@ rm -f ${DIR}/index/*
 rm -f ${DIR}/container.pool
 rm -f ${DIR}/destor.stat
 rm -f ${DIR}/manifest
-rm -rf ${DIR}/../restore/
-mkdir -p ${DIR}/../restore/

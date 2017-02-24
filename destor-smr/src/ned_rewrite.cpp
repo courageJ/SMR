@@ -140,7 +140,7 @@ void *ned_rewrite(void* arg) {
 		}
 		sort(Node, Node + cur_container_count);		
 	
-		int32_t num = destor.rewrite_ned_level;//这里是百分之的num
+		int32_t num = destor.rewrite_ned_level;//The value is ratio * 100.
 		
 		GHashTable *chunk_cover;
 
@@ -150,8 +150,7 @@ void *ned_rewrite(void* arg) {
 			containerid tmpid = Node[i].id;
 			containerid realid = tmp_to_real_containerid[tmpid];
 			assert(realid != -1);
-			//得到这个container含有多少个chunk
-			int32_t cur_ctr_chunk_num = 1169;
+			int32_t cur_ctr_chunk_num = 1169; //The amount of chunks in a container.
 			if (!(Node[i].chunkcount * 100 >= cur_ctr_chunk_num * num)) break;
 			struct containerRecord* r = (struct containerRecord*) malloc(
 					sizeof(struct containerRecord));
@@ -287,7 +286,6 @@ void *ned_rewrite(void* arg) {
 		containerid tmpid = Node[i].id;
 		containerid realid = tmp_to_real_containerid[tmpid];
 		assert(realid != -1);
-		//得到这个container含有多少个chunk
 		int32_t cur_ctr_chunk_num = 1169;
 		if (!(Node[i].chunkcount * 100 >= cur_ctr_chunk_num * num)) break;
 		struct containerRecord* r = (struct containerRecord*) malloc(

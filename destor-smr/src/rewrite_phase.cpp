@@ -148,19 +148,16 @@ void start_rewrite_phase() {
         pthread_create(&rewrite_t, NULL, cfl_rewrite, NULL);
     } else if (destor.rewrite_algorithm[0] == REWRITE_CONTEXT_BASED) {
         pthread_create(&rewrite_t, NULL, cbr_rewrite, NULL);
-		printf ("start_rewrite_phase: cbr_level: %f\n", destor.rewrite_cbr_minimal_utility);
+		NOTICE("start_rewrite_phase: cbr_level: %f\n", destor.rewrite_cbr_minimal_utility);
     } else if (destor.rewrite_algorithm[0] == REWRITE_CAPPING) {
         pthread_create(&rewrite_t, NULL, cap_rewrite, NULL);
-    	//courageJ
-		printf ("start_rewrite_phase: capping_level: %d\n", destor.rewrite_capping_level);
+		NOTICE("start_rewrite_phase: capping_level: %d\n", destor.rewrite_capping_level);
     } else if (destor.rewrite_algorithm[0] == REWRITE_SMR) {
         pthread_create(&rewrite_t, NULL, smr_rewrite, NULL);
-        //courageJ
-		printf ("start_rewrite_phase: smr_level: %d\n", destor.rewrite_smr_level);
+		NOTICE("start_rewrite_phase: smr_level: %d\n", destor.rewrite_smr_level);
     } else if (destor.rewrite_algorithm[0] == REWRITE_NED) {
         pthread_create(&rewrite_t, NULL, ned_rewrite, NULL);
-        //courageJ
-		printf ("start_rewrite_phase: ned_level: %d\n", destor.rewrite_ned_level);
+		NOTICE("start_rewrite_phase: ned_level: %d\n", destor.rewrite_ned_level);
     } else {
         fprintf(stderr, "Invalid rewrite algorithm\n");
         exit(1);

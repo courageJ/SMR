@@ -30,9 +30,7 @@ static void* sha1_thread(void* arg) {
 		SHA_Init(&ctx);
 		SHA_Update(&ctx, c->data, c->size);
 		SHA_Final(c->fp, &ctx);
-		/* courageJ 
-		 * change the first one into 255
-		 */
+
 		c->fp[0] = (unsigned char)(255);
 		TIMER_END(1, jcr.hash_time);
 

@@ -172,7 +172,7 @@ AC_REQUIRE([AM_OUTPUT_DEPENDENCY_COMMANDS])dnl
 AC_REQUIRE([AM_MAKE_INCLUDE])dnl
 AC_REQUIRE([AM_DEP_TRACK])dnl
 
-m4_if([$1], [CC],   [depcc="$CXX"   am_compiler_list=],
+m4_if([$1], [CC],   [depcc="$CC"   am_compiler_list=],
       [$1], [CXX],  [depcc="$CXX"  am_compiler_list=],
       [$1], [OBJC], [depcc="$OBJC" am_compiler_list='gcc3 gcc'],
       [$1], [OBJCXX], [depcc="$OBJCXX" am_compiler_list='gcc3 gcc'],

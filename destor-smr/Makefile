@@ -80,8 +80,8 @@ bin_PROGRAMS = destor$(EXEEXT)
 subdir = .
 DIST_COMMON = INSTALL NEWS README AUTHORS ChangeLog \
 	$(srcdir)/Makefile.in $(srcdir)/Makefile.am \
-	$(top_srcdir)/configure $(am__configure_deps) COPYING compile \
-	depcomp install-sh missing
+	$(top_srcdir)/configure $(am__configure_deps) COPYING depcomp \
+	install-sh missing
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -115,7 +115,7 @@ AM_V_CC = $(am__v_CC_$(V))
 am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))
 am__v_CC_0 = @echo "  CC      " $@;
 am__v_CC_1 = 
-CCLD = $(CC)
+CCLD = $(CXX)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_CCLD = $(am__v_CCLD_$(V))
 am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))
@@ -214,14 +214,11 @@ AUTOCONF = autoconf
 AUTOHEADER = autoheader
 AUTOMAKE = automake-1.13
 AWK = gawk
-CC = g++
-CCDEPMODE = depmode=gcc3
-CFLAGS = -g -O2 -Wall
-CPP = g++ -E
 CPPFLAGS = 
 CXX = g++
+CXXCPP = g++ -E
 CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -g -O2
+CXXFLAGS = -g -O2 -Wall
 CYGPATH_W = echo
 DEFS = -DPACKAGE_NAME=\"destor\" -DPACKAGE_TARNAME=\"destor\" -DPACKAGE_VERSION=\"2.0\" -DPACKAGE_STRING=\"destor\ 2.0\" -DPACKAGE_BUGREPORT=\"fumin@hust.edu.cn\" -DPACKAGE_URL=\"\" -DPACKAGE=\"destor\" -DVERSION=\"2.0\" -DHAVE_LIBPTHREAD=1 -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_ARPA_INET_H=1 -DHAVE_FCNTL_H=1 -DHAVE_STDINT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_SYS_SOCKET_H=1 -DHAVE_SYS_TIME_H=1 -DHAVE_UNISTD_H=1 -DHAVE_GLIB_H=1 -DHAVE_OPENSSL_SHA_H=1 -DHAVE_STDLIB_H=1 -DHAVE_MALLOC=1
 DEPDIR = .deps
@@ -256,11 +253,10 @@ SET_MAKE =
 SHELL = /bin/sh
 STRIP = 
 VERSION = 2.0
-abs_builddir = /home/wj/destor-revised
-abs_srcdir = /home/wj/destor-revised
-abs_top_builddir = /home/wj/destor-revised
-abs_top_srcdir = /home/wj/destor-revised
-ac_ct_CC = g++
+abs_builddir = /home/wj/destor-smr
+abs_srcdir = /home/wj/destor-smr
+abs_top_builddir = /home/wj/destor-smr
+abs_top_srcdir = /home/wj/destor-smr
 ac_ct_CXX = g++
 am__include = include
 am__leading_dot = .
@@ -279,7 +275,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/wj/destor-revised/install-sh
+install_sh = ${SHELL} /home/wj/destor-smr/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale

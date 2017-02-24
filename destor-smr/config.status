@@ -431,7 +431,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/wj/destor-revised'
+ac_pwd='/home/wj/destor-smr'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/usr/bin/mkdir -p'
@@ -602,14 +602,8 @@ S["LTLIBOBJS"]=""
 S["LIBOBJS"]=""
 S["EGREP"]="/usr/bin/grep -E"
 S["GREP"]="/usr/bin/grep"
-S["CPP"]="g++ -E"
+S["CXXCPP"]="g++ -E"
 S["RANLIB"]="ranlib"
-S["am__fastdepCC_FALSE"]="#"
-S["am__fastdepCC_TRUE"]=""
-S["CCDEPMODE"]="depmode=gcc3"
-S["ac_ct_CC"]="g++"
-S["CFLAGS"]="-g -O2 -Wall"
-S["CC"]="g++"
 S["am__fastdepCXX_FALSE"]="#"
 S["am__fastdepCXX_TRUE"]=""
 S["CXXDEPMODE"]="depmode=gcc3"
@@ -625,7 +619,7 @@ S["EXEEXT"]=""
 S["ac_ct_CXX"]="g++"
 S["CPPFLAGS"]=""
 S["LDFLAGS"]=""
-S["CXXFLAGS"]="-g -O2"
+S["CXXFLAGS"]="-g -O2 -Wall"
 S["CXX"]="g++"
 S["AM_BACKSLASH"]="\\"
 S["AM_DEFAULT_VERBOSITY"]="1"
@@ -641,7 +635,7 @@ S["mkdir_p"]="$(MKDIR_P)"
 S["MKDIR_P"]="/usr/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]=""
-S["install_sh"]="${SHELL} /home/wj/destor-revised/install-sh"
+S["install_sh"]="${SHELL} /home/wj/destor-smr/install-sh"
 S["MAKEINFO"]="makeinfo"
 S["AUTOHEADER"]="autoheader"
 S["AUTOMAKE"]="automake-1.13"

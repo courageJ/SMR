@@ -372,7 +372,6 @@ struct chunk* get_chunk_in_container(struct container* c, fingerprint *fp) {
 
 	//assert(me);
 	if (!me) {
-//		puts("375L");
 		struct chunk* ck = new_chunk(0);
 		ck->id = c->meta.id;
 		memcpy(&ck->fp, &fp, sizeof(fingerprint));

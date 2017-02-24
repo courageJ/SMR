@@ -70,13 +70,13 @@ void *smr_rewrite(void* arg) {
 		TIMER_BEGIN(1);
 		if (!rewrite_buffer_push(c)) {
 			rewrite_buffer_chunk_pt.push_back(c);
-			//1. add all chunk pt into buffer
+			//Grouping into segment.
 			TIMER_END(1, jcr.rewrite_time);
 			continue;
 		}
 
-		//2. get all refered ids of all chunks
-		//   add keep all chunk fp into the vector of the container they belongs to
+		//Redundancy Identification
+		//Getting the referenced container IDs by inquiring the fingerprint index table
 		real_containerid_to_tmp = g_hash_table_new_full(g_int64_hash, g_int64_equal, NULL, free);
 		memset(tmp_to_real_containerid, -1, sizeof(tmp_to_real_containerid));
 		int cur_container_count = 0;
@@ -132,14 +132,9 @@ void *smr_rewrite(void* arg) {
 			}
 			pthread_mutex_unlock(&index_lock.mutex);
 		}
-		//SMR
-		//1. travel all containers to find the container with maximum chunkcount and set it the start
-		//2. if num > 0, add the start to set V
-
-		//3. for each num-1 round, travel to find the most benefit,
-		//   update chunkcover, container id
-		//		for each round
-		//			check all chunks belonging to the container, that is newer to the chunkcover, and get the max chunk count(id)
+		//SMR: submodular maximization rewriting scheme
+		//For each iteration, choose the container which maximize the submodular monotone score function, i.e, the number of distinct referenced chunks.
+		//Note: If the increased number is not larger than 0, the iteration will stop to save disk accesses.
 		int32_t length = cur_container_count;		
 		int32_t num;
 		if (length > destor.rewrite_smr_level) {
@@ -160,7 +155,6 @@ void *smr_rewrite(void* arg) {
 				int64_t preCtrID = -1;
 				for (int cur_ctr_id = 0; cur_ctr_id < cur_container_count; cur_ctr_id++) {
 					if (is_container_selected[cur_ctr_id]) continue;
-					if (all_fp[cur_ctr_id].size() < 10) continue;
 					int64_t curDedup = 0;
 					for (int chunk_id = 0; chunk_id < all_fp[cur_ctr_id].size(); chunk_id++) {
 						string cur_chunk = all_fp[cur_ctr_id][chunk_id];
@@ -178,7 +172,7 @@ void *smr_rewrite(void* arg) {
 					}
 				}
 				if (preDedup == -1) {
-					break;//end early
+					break;
 				}
 				container_selected.push_back(preCtrID);
 				is_container_selected[preCtrID] = 1;
@@ -214,7 +208,7 @@ void *smr_rewrite(void* arg) {
 			all_fp[i].clear();
 		}
 
-
+		//Recording the unique and rewritten chunks
 		while ((c = rewrite_buffer_pop())) {
 			if (!CHECK_CHUNK(c,	CHUNK_FILE_START) 
 					&& !CHECK_CHUNK(c, CHUNK_FILE_END)
@@ -238,13 +232,12 @@ void *smr_rewrite(void* arg) {
 		g_hash_table_remove_all(chunk_cover);
 	}
 
-
-	//2. get all refered ids of all chunks
-	//   add keep all chunk fp into the vector of the container they belongs to
+	//The last segment
 	real_containerid_to_tmp = g_hash_table_new_full(g_int64_hash, g_int64_equal, NULL, free);
 	memset(tmp_to_real_containerid, -1, sizeof(tmp_to_real_containerid));
 	int cur_container_count = 0;
 
+	//Redundancy Identification
 	for (int chunk_id = 0; chunk_id < rewrite_buffer_chunk_pt.size(); chunk_id++) {
 		c = rewrite_buffer_chunk_pt[chunk_id];
 		if(!CHECK_CHUNK(c, CHUNK_DUPLICATE)) continue;
@@ -297,6 +290,8 @@ void *smr_rewrite(void* arg) {
 		}
 		pthread_mutex_unlock(&index_lock.mutex);
 	}
+
+	//SMR
 	int32_t length = cur_container_count;		
 	int32_t num;
 	if (length > destor.rewrite_smr_level) {
@@ -333,7 +328,7 @@ void *smr_rewrite(void* arg) {
 				}
 			}
 			if (preDedup == -1) {
-				break;//end early
+				break;
 			}
 			container_selected.push_back(preCtrID);
 			is_container_selected[preCtrID] = 1;
@@ -369,6 +364,7 @@ void *smr_rewrite(void* arg) {
 		all_fp[i].clear();
 	}
 
+	//Recording the unique and rewritten chunks
 	while ((c = rewrite_buffer_pop())) {
 		if (!CHECK_CHUNK(c,	CHUNK_FILE_START) && !CHECK_CHUNK(c, CHUNK_FILE_END)
 				&& !CHECK_CHUNK(c, CHUNK_SEGMENT_START) && !CHECK_CHUNK(c, CHUNK_SEGMENT_END)) {

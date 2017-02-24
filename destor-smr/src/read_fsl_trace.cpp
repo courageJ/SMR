@@ -149,15 +149,8 @@ void* read_fsl_trace(void *argv)
              */
             memset(c->fp, 0, sizeof(fingerprint));
             memcpy(c->fp, ci->hash, hashfile_hash_size(handle) / 8);
-		/* courageJ 
- * 		 * change the first one into 255
- * 		 		 */
-		c->fp[0] = (unsigned char)(255);
-		sync_queue_push(trace_queue, c);
-		//char code[41];
-                //hash2code(c->fp, code);
-                //code[40] = 0;
-                //printf("code :%s\n", code);
+			c->fp[0] = (unsigned char)(255);
+			sync_queue_push(trace_queue, c);
 
 		}
 

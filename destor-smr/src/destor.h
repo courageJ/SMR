@@ -161,8 +161,8 @@
 #define REWRITE_CFL_SELECTIVE_DEDUPLICATION 1
 #define REWRITE_CONTEXT_BASED 2
 #define REWRITE_CAPPING 3
-#define REWRITE_SMR 4 //courageJ
-#define REWRITE_NED 5 //courageJ
+#define REWRITE_SMR 4
+#define REWRITE_NED 5
 
 #define TEMPORARY_ID (-1L)
 

@@ -7,8 +7,8 @@ AM_INIT_AUTOMAKE([destor], [2.0])
 
 # Checks for programs.
 AC_PROG_CXX
-AC_PROG_CC
-CFLAGS="-g -O2 -Wall"
+CXXFLAGS="-g -O2 -Wall"
+CC=g++
 
 # Checks for libraries.
 AC_CHECK_LIB([pthread], [pthread_create])
