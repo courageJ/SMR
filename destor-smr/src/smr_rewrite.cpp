@@ -351,12 +351,12 @@ void *smr_rewrite(void* arg) {
 		c = rewrite_buffer_chunk_pt[chunk_id];	
 		if(!CHECK_CHUNK(c, CHUNK_DUPLICATE)) continue;
 		char code[41];
-	    code2hash(c->fp, (unsigned char *)code);
-	    code[40] = 0;				
+		hash2code(c->fp, code);
+	    	code[40] = 0;				
 		containerid *idpt = (containerid *)g_hash_table_lookup(chunk_cover, &code);
-	    if (idpt != NULL) {
-	    	c->id = *idpt;
-	    }
+		if (idpt != NULL) {
+		c->id = *idpt;
+		}
 	}
 
 	rewrite_buffer_chunk_pt.clear();
