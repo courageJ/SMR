@@ -4,7 +4,7 @@ SMR, i.e, Submodular Maximization Rewriting Scheme, is a cost-efficient rewritin
 
 # The SMR paper
 
-Jie Wu, Yu Hua, Pengfei Zuo and Yuanyuan Sun, "A Cost-efficient Rewriting Scheme to Improve Restore Performance in Deduplication Systems".
+Jie Wu, Yu Hua, Pengfei Zuo, Yuanyuan Sun, "A Cost-efficient Rewriting Scheme to Improve Restore Performance in Deduplication Systems", Proceedings of the 33rd International Conference on Massive Storage Systems and Technology (MSST), 2017.
 
 # Implementation
 
@@ -65,4 +65,3 @@ The SMR level in `destor.config` is adjustable according to the demand of restor
 Email: wujie@hust.edu.cn
 
 If you have any questions, please feel free to contact me.
-
