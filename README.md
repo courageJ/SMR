@@ -64,6 +64,6 @@ The default rewriting scheme in `destor.config` is SMR. You can choose other rew
 The SMR level in `destor.config` is adjustable according to the demand of restore performance. 
 # Contact
 
-Email: wujie@hust.edu.cn
+Email: couragewj@gmail.com
 
 If you have any questions, please feel free to contact me.
